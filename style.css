@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.containerHeader{
+  width: 100vw;
+  height: 8vh;
+  background-color: #1e3f72;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.containerContentHeader{
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.4rem;
+}
+
+.inputHeader{
+  border-radius: 0.4rem;
+  border: none;
+  padding: 0.3rem;
+  outline: none;
+  width: 20vw;
+}
+
+.buttonSearch{
+  color: white;
+  border: 1px solid white;
+  background-color: transparent;
+  padding: 5px 10px;
+  border-radius: 0.4rem;
+  width: 10vw;
+}
+
+.buttonAdd{
+  width: 20vw;
+  border-radius: 0.4rem;
+  border: 1px solid white;
+  background-color: transparent;
+  padding: 5px 10px;
+  color: white;
+}
