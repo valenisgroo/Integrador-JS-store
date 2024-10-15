@@ -1,9 +1,11 @@
+/* GENERAL */
 * {
   margin: 0;
   padding: 0;
   font-family: "Rubik", sans-serif;
 }
 
+/* HEADER */
 .containerHeader{
   width: 100vw;
   height: 8vh;
@@ -14,7 +16,7 @@
 }
 
 .containerContentHeader{
-  width: 60%;
+  width: 65%;
   display: flex;
   justify-content: space-between;
   padding: 0.4rem;
@@ -30,25 +32,29 @@
 .inputHeader{
   border-radius: 0.4rem;
   border: none;
-  padding: 0.3rem;
+  padding: 0.4rem;
   outline: none;
   width: 20vw;
+  height: 2vh;
+  font-size: 1.5vh;
 }
 
 .buttonSearch{
   color: white;
   border: 1px solid white;
   background-color: transparent;
-  padding: 5px 10px;
+  padding: 0.4rem;
   border-radius: 0.4rem;
-  width: 10vw;
+  width: 11vw;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  transition: 0.2s ease;
 }
 
 .buttonSearch:hover {
   cursor: pointer;
+  background-color: #344b6e;
 }
 
 .buttonAdd{
@@ -56,6 +62,32 @@
   border-radius: 0.4rem;
   border: 1px solid white;
   background-color: transparent;
-  padding: 5px 10px;
+  padding: 0.4rem;
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s ease;
+}
+
+.buttonAdd:hover {
+  cursor: pointer;
+  background-color: #344b6e;
+}
+
+/* MAIN */
+
+.containerMain{
+  display: grid;
+   grid-template-columns: 0.2fr 0.8fr; /* The first column takes up 0.3 fraction 30% of the available space and The second column takes up 0.7 fraction 70% of the available space. */
+}
+
+.list{
+  background-color: #05b164;
+  height: 92vh;
+}
+
+.store{
+  background: red;
+  height: 92vh;
 }
