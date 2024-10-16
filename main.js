@@ -61,5 +61,6 @@ const handleSaveOrModifyElements = () => {
   };
 
   setInLocalStorage(object); // Guardar en LocalStorage
+  handleGetProductsToStore();
   closeModal(); // Cerrar el modal
 };

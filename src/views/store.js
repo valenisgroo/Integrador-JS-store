@@ -18,23 +18,24 @@ export const handleRenderList = (productosIn) => {
     console.log(productos);
     if (productos.length > 0) {
       const productosHTML = productos.map((producto, index) => {
-        return `<div>
+        return `<div class="containerTargetItem">
                     <div>
                     <img src="${producto.imagen}">
-                    <div>
+                    <div class="targetProps">
                     <h2>${producto.nombre}</h2>
                     </div>
                     <div>
                     <p><b>Precio: </b> $ ${producto.precio}</p>
-                    <p><b>Categoria: </b> $ ${producto.categories}</p>
                     </div>
                     </div>
                 </div>`;
       });
       return `
-             <section>
-                <h3>${title}</h3>
-                <div>
+             <section class="sectionStore">
+                  </div class="containerTitleSection">
+                      <h3>${title}</h3>
+                  </div>
+                <div class="containerProductStore">
                 ${productosHTML.join('')}
                 </div>
             </section>
