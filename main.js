@@ -1,57 +1,65 @@
+import { setInLocalStorage, handleGetProductLocalStorage } from './src/persistence/localstorage';
+import { renderCategories } from './src/services/categories';
+import { handleGetProductsToStore } from './src/views/store';
+import './style.css';
 
-import { setInLocalStorage } from "./src/persistence/localstorage";
-import { renderCategories } from "./src/services/categories";
-import "./style.css";
-
+handleGetProductsToStore();
 renderCategories();
 
 // PRODUCTS
 const buttonAdd = document.getElementById("buttonAdd");
-
-buttonAdd.addEventListener("click", ()=> {
-    openModal();
+buttonAdd.addEventListener("click", () => {
+  openModal();
 });
 
-
-/*POPUP*/ 
-
+/*POPUP*/
 const cancelButton = document.getElementById("cancelButton");
 cancelButton.addEventListener("click", () => {
-    handleCancelButton();
+  handleCancelButton();
 });
 
 const handleCancelButton = () => {
-    closeModal();
+  closeModal();
 };
 
-//FUNCIONES ABRIR Y CERRAR
+// Funciones para abrir y cerrar el modal
 const openModal = () => {
-    const modal = document.getElementById("modalPopUp");
-    modal.style.display = "flex";
+  const modal = document.getElementById("modalPopUp");
+  modal.style.display = "flex";
 };
 
 const closeModal = () => {
-    const modal = document.getElementById("modalPopUp");
-    modal.style.display = "none"
+  const modal = document.getElementById("modalPopUp");
+  modal.style.display = "none";
 };
 
-//GUARDAR O MODIFICAR ELEMENTOS
-
+// Guardar o modificar productos
 const acceptButton = document.getElementById("acceptButton");
 acceptButton.addEventListener("click", () => {
-    handleSaveOrModifyElements();
-})
+  handleSaveOrModifyElements();
+});
 
 const handleSaveOrModifyElements = () => {
-    const nombre = document.getElementById("nombre").value,   
+  const nombre = document.getElementById("nombre").value,
     imagen = document.getElementById("img").value,
     precio = document.getElementById("precio").value,
     categories = document.getElementById("categoria").value;
 
-    let object = {
-        id: new Date().toISOString,
-        nombre, imagen, precio, categories,
-    };
+  // Validación de los campos
+  if (!nombre || !imagen || !precio || !categories) {
+    alert("Por favor completa todos los campos antes de guardar.");
+    return;
+  }
 
-    setInLocalStorage(object);
+ 
+  let object = {
+    id: new Date().toISOString(), 
+    nombre,
+    imagen,
+    precio,
+    categories,
+  };
+
+  setInLocalStorage(object); // Guardar en LocalStorage
+  closeModal(); // Cerrar el modal
 };
