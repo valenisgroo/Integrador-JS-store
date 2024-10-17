@@ -3,6 +3,13 @@ import { renderCategories } from './src/services/categories';
 import { handleGetProductsToStore } from './src/views/store';
 import './style.css';
 
+export let categoriaActiva = null;
+export const setCategoriaActiva = (categoriaIn) => {
+  categoriaActiva = categoriaIn;
+};
+
+
+
 export let productoActivo = null;
 export const setproductoActivo = (productoIn) => {
 productoActivo = productoIn;
