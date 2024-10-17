@@ -3,6 +3,12 @@ import { renderCategories } from './src/services/categories';
 import { handleGetProductsToStore } from './src/views/store';
 import './style.css';
 
+export let productoActivo = null;
+export const setproductoActivo = (productoIn) => {
+productoActivo = productoIn;
+};
+
+
 handleGetProductsToStore();
 renderCategories();
 
@@ -23,15 +29,42 @@ const handleCancelButton = () => {
 };
 
 // Funciones para abrir y cerrar el modal
-const openModal = () => {
+export const openModal = () => {
   const modal = document.getElementById("modalPopUp");
   modal.style.display = "flex";
+  
+  if (productoActivo) {
+    const nombre = document.getElementById("nombre"),
+      imagen = document.getElementById("img"),
+      precio = document.getElementById("precio"),
+      categories = document.getElementById("categoria");
+      nombre.value = productoActivo.nombre;
+      imagen.value = productoActivo.imagen;
+      precio.value = productoActivo.precio;
+      categories.value = productoActivo.categories;
+  }
 };
 
-const closeModal = () => {
+
+export const closeModal = () => {
   const modal = document.getElementById("modalPopUp");
   modal.style.display = "none";
+  setproductoActivo(null);
+  resetModal();
 };
+
+const resetModal = () => {
+  const nombre = document.getElementById("nombre"),
+    imagen = document.getElementById("img"),
+    precio = document.getElementById("precio"),
+    categories = document.getElementById("categoria");
+    nombre.value = "";
+    imagen.value = "";
+    precio.value = 0;
+    categories.value = "Seleccione una categoria";
+}
+
+
 
 // Guardar o modificar productos
 const acceptButton = document.getElementById("acceptButton");
@@ -51,14 +84,29 @@ const handleSaveOrModifyElements = () => {
     return;
   }
 
+  let object = null;
+
+  if (productoActivo){
+
+    object = {
+      ...productoActivo,
+      nombre,
+      imagen,
+      precio,
+      categories,
+    }
+
+  } else{
+      object = {
+      id: new Date().toISOString(), 
+      nombre,
+      imagen,
+      precio,
+      categories,
+    };
+  }
  
-  let object = {
-    id: new Date().toISOString(), 
-    nombre,
-    imagen,
-    precio,
-    categories,
-  };
+  
 
   setInLocalStorage(object); // Guardar en LocalStorage
   handleGetProductsToStore();

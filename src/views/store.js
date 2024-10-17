@@ -1,6 +1,7 @@
 //STORE
 
 import { handleGetProductLocalStorage } from '../persistence/localstorage';
+import { setproductoActivo, openModal } from '../../main';
 
 //Funcion para obtener los productos y renderizarlos
 export const handleGetProductsToStore = () => {
@@ -21,7 +22,7 @@ export const handleRenderList = (productosIn) => {
         return `<div class="containerTargetItem"
                     id='product-${producto.categories}-${index}'>
                     <div>
-                    <img src='${producto.imagen}' style="width: 200px; height: 200px;" />
+                    <img src='${producto.imagen}' />
                     <div class="targetProps">
                     <h2>${producto.nombre}</h2>
                     </div>
@@ -52,5 +53,22 @@ export const handleRenderList = (productosIn) => {
         ${renderProductGroup(papas, 'Papas')}
         ${renderProductGroup(gaseosas, 'Gaseosas')}
         `
+      // Añaden los eventos de manera dinámica
+      const addEvents = (productsIn) => {
+        if (productsIn) {
+          productsIn.forEach((element, index) => {
+            const productContainer = document.getElementById(
+              `product-${element.categories}-${index}`
+            );
+            productContainer.addEventListener("click", () => {
+              setproductoActivo(element);
+              openModal();
+            });
+          });
+        }
+      };
+      addEvents(burgers);
+      addEvents(papas);
+      addEvents(gaseosas);
 };
 
