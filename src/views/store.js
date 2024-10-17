@@ -1,7 +1,9 @@
 //STORE
 
-import { handleGetProductLocalStorage } from '../persistence/localstorage';
-import { setproductoActivo, openModal } from '../../main';
+import { setproductoActivo } from "../../main";
+import { handleGetProductLocalStorage } from "../persistence/localstorage";
+import { openModal } from "./modal";
+
 
 //Funcion para obtener los productos y renderizarlos
 export const handleGetProductsToStore = () => {

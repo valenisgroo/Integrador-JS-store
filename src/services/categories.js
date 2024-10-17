@@ -1,5 +1,4 @@
 //CATEGORIAS
-
 import { categoriaActiva } from "../../main";
 import {handleGetProductLocalStorage} from "../persistence/localstorage"
 import { handleRenderList } from "../views/store";
