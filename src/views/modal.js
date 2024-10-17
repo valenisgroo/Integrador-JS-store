@@ -1,4 +1,5 @@
 import { productoActivo, setproductoActivo } from "../../main";
+import { handleDeleteProduct } from "../services/products";
 
 /*POPUP*/
 const cancelButton = document.getElementById("cancelButton");
@@ -11,6 +12,15 @@ cancelButton.addEventListener("click", () => {
 export const openModal = () => {
   const modal = document.getElementById("modalPopUp");
   modal.style.display = "flex";
+
+  const buttonDelete = document.getElementById("deleteButton");
+  if (productoActivo){
+    buttonDelete.style.display = "block";
+
+
+  }else{
+    buttonDelete.style.display = "none";
+  }
   
   if (productoActivo) {
     const nombre = document.getElementById("nombre"),
@@ -41,4 +51,13 @@ const resetModal = () => {
     imagen.value = "";
     precio.value = 0;
     categories.value = "Seleccione una categoria";
+};
+
+const deleteButton = document.getElementById("deleteButton");
+deleteButton.addEventListener("click", () => {
+  handlebuttonDelete(); // Cannot read properties of undefined (reading 'addEventListener')
+});
+
+const handlebuttonDelete = () => {
+  handleDeleteProduct(); // Cannot read properties of undefined
 };

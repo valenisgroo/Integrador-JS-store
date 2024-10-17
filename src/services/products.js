@@ -1,7 +1,11 @@
-import { closeModal } from '../../main';
-import { setInLocalStorage } from './src/persistence/localstorage';
-import { handleGetProductsToStore } from './src/views/store';
-import './style.css';
+import { productoActivo } from '../../main';
+import { handleGetProductLocalStorage } from '../persistence/localstorage';
+import { handleRenderList } from '../views/store';
+import { setInLocalStorage } from '../persistence/localstorage';
+import { handleGetProductsToStore } from '../views/store';
+import '../../style.css';
+import { closeModal } from '../views/modal';
+import Swal from 'sweetalert2';
 
 // PRODUCTS
 
@@ -45,10 +49,44 @@ const handleSaveOrModifyElements = () => {
       categories,
     };
   }
+
+  Swal.fire({
+    title: "¡Correcto!",
+    text: "Producto agregado!",
+    icon: "success"
+  });
  
   
 
   setInLocalStorage(object); // Guardar en LocalStorage
   handleGetProductsToStore();
   closeModal(); // Cerrar el modal
+};
+
+export const handleDeleteProduct = () => {
+
+  Swal.fire({
+    title: "¿Desea eliminar elemento?",
+    text: "De forma permanente!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "¡Si, eliminar!"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      const products = handleGetProductLocalStorage();
+      const result = products.filter((el) => el.id !== productoActivo.id);
+      
+      // setear el nuevo array
+      localStorage.setItem("products", JSON.stringify(result));
+      
+      const newProducts = handleGetProductLocalStorage();
+      handleRenderList(newProducts);
+      closeModal();
+    } else{
+      closeModal();
+    }
+  });
+
 };
