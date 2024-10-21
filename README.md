@@ -31,7 +31,7 @@ Las funcionalidades principales de la tienda son:
 ## ✅ Visualización
 
 Puedes ver el proyecto en el siguiente enlace:  
-[Demo Tienda de Productos](https://valenisgroo.github.io/Integrador-JS-store/)
+[Demo Tienda de Productos](https://valenisgroo.github.io/Integrador-JS-store/](https://front-end-integrador-6q79oi8yv-valentino-isgros-projects.vercel.app/)
 
 ---
 
